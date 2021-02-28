@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private int health = 100;
+    [SerializeField] private GameObject deathVFX;
 
 
     public void DealDamage(int damage)
@@ -14,6 +15,16 @@ public class Health : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            PlayDeathVFX();
         }
-}
+    }
+
+    private void PlayDeathVFX()
+    {
+        if (!deathVFX)
+            return;
+
+        var deathVfxObj = Instantiate(deathVFX, transform.position, transform.rotation);
+        Destroy(deathVfxObj, 2f);
+    }
 }
