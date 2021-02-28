@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
@@ -12,6 +13,11 @@ public class StarDisplay : MonoBehaviour
     private void Awake()
     {
         _starText = GetComponent<Text>();
+    }
+
+    private void Start()
+    {
+        UpdateDisplay();
     }
 
     private void UpdateDisplay()
