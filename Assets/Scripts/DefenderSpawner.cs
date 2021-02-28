@@ -6,6 +6,12 @@ using UnityEngine;
 public class DefenderSpawner : MonoBehaviour
 {
     private Defender _defender;
+    private StarDisplay _starDisplay;
+
+    private void Awake()
+    {
+        _starDisplay = FindObjectOfType<StarDisplay>();
+    }
 
     public void SetSelectedDefender(Defender defenderToSelect)
     {
@@ -34,7 +40,11 @@ public class DefenderSpawner : MonoBehaviour
     {
         if (!_defender)
             return;
-        
-        Instantiate(_defender, position, Quaternion.identity);
+
+        if (_starDisplay.HaveEnoughStarsToBuild(_defender.GetCost()))
+        {
+            Instantiate(_defender, position, Quaternion.identity);
+            _starDisplay.SpendStar(_defender.GetCost());
+        }
     }
 }
