@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     [SerializeField] private GameObject deathVFX;
 
 
-    public void DealDamage(int damage)
+    public void GetDamage(int damage)
     {
         health -= damage;
 

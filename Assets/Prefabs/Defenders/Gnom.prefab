@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 6331294346795275175}
   - component: {fileID: 794557367495734712}
   - component: {fileID: 8508806539292711417}
+  - component: {fileID: 1325739425057394175}
   m_Layer: 0
   m_Name: Gnom
   m_TagString: Untagged
@@ -221,3 +222,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1325739425057394175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9018801410137646497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcbbcdbf58b83844b87f11b6cf6533bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  deathVFX: {fileID: 8662914714173475151, guid: c6cfa01d21606a044b7db6ab4ba247e4,
+    type: 3}
