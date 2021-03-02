@@ -23,13 +23,12 @@ public class Spawner : MonoBehaviour
     private IEnumerator Start()
     {
         _levelController.LevelTimeFinished.AddListener(StopSpawning);
+        yield return new WaitForSeconds(Random.Range(minTimeDelay, maxTimeDelay));
         while (spawn)
         {
-            yield return new WaitForSeconds(Random.Range(minTimeDelay, maxTimeDelay));
-
             var random = Random.Range(0, attackerPrefabs.Length);
             SpawnAttacker(attackerPrefabs[random]);
-
+            yield return new WaitForSeconds(Random.Range(minTimeDelay, maxTimeDelay));
         }
     }
 
