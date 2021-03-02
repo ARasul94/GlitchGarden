@@ -43,3 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df5394f9418f814fa83cdbd98f00f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelCompleteCanvas: {fileID: 0}
+  winSound: {fileID: 8300000, guid: 13c26c88d399e6f49806e83fe678834d, type: 3}

@@ -14,13 +14,17 @@ public class SceneLoader : MonoBehaviour
         _currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (_currentSceneIndex == 0)
         {
-            StartCoroutine(LoadWithDelay());
+            LoadNextSceneWithDelay();
         }
     }
 
-    private IEnumerator LoadWithDelay()
+    public void LoadNextSceneWithDelay()
     {
-        yield return new WaitForSeconds(waitForLoad);
+        StartCoroutine(LoadWithDelay(waitForLoad));
+    }
+    private IEnumerator LoadWithDelay(float time)
+    {
+        yield return new WaitForSeconds(time);
         LoadNextScene();
     }
 
