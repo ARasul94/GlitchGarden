@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
@@ -8,8 +11,18 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Attacker[] attackerPrefabs;
     [SerializeField] private bool spawn = true;
 
+
+    private LevelController _levelController;
+    private void Awake()
+    {
+        _levelController = FindObjectOfType<LevelController>();
+        if (_levelController == null)
+            throw new Exception($"No LevelController Object on {SceneManager.GetActiveScene().name} scene");
+    }
+
     private IEnumerator Start()
     {
+        _levelController.LevelTimeFinished.AddListener(StopSpawning);
         while (spawn)
         {
             yield return new WaitForSeconds(Random.Range(minTimeDelay, maxTimeDelay));
@@ -24,5 +37,10 @@ public class Spawner : MonoBehaviour
     {
         var attackerObject = Instantiate(attacker, transform);
         attackerObject.transform.position = transform.position;
+    }
+
+    private void StopSpawning()
+    {
+        spawn = false;
     }
 }

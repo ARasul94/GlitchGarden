@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Animator))]
 public class Attacker : MonoBehaviour
@@ -12,11 +13,25 @@ public class Attacker : MonoBehaviour
 
     private Defender _currentTarget;
     private Animator _animator;
+    private LevelController _levelController;
     private readonly int _isAttacking = Animator.StringToHash("IsAttacking");
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _levelController = FindObjectOfType<LevelController>();
+        if (_levelController == null)
+            throw new Exception($"No LevelController Object on {SceneManager.GetActiveScene().name} scene");
+    }
+
+    private void Start()
+    {
+        _levelController.EnemySpawned();
+    }
+
+    private void OnDestroy()
+    {
+        _levelController.EnemyKilled();
     }
 
     private void Update()
