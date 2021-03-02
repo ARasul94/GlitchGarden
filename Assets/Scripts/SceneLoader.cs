@@ -37,4 +37,9 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    
+    public void LoadSameScene()
+    {
+        SceneManager.LoadScene(_currentSceneIndex);
+    }
 }

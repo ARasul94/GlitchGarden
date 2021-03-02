@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ public class LivesDisplay : MonoBehaviour
 {
     [SerializeField] private int lives = 5;
 
+    public readonly UnityEvent OnLivesEnded = new UnityEvent(); 
+    
     private Text _livesText;
     private int _damage = 1;
     private SceneLoader _sceneLoader;
@@ -40,7 +43,7 @@ public class LivesDisplay : MonoBehaviour
     {
         if (lives <= 0)
         {
-            _sceneLoader.LoadStartScene();
+            OnLivesEnded.Invoke();
             return;
         }
         lives -= _damage;

@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class LevelController : MonoBehaviour
 {
     [SerializeField] private GameObject levelCompleteCanvas;
+    [SerializeField] private GameObject loseCanvas;
     [SerializeField] private AudioClip winSound;
 
     public readonly UnityEvent AllEnemiesKilled = new UnityEvent();
@@ -15,13 +16,24 @@ public class LevelController : MonoBehaviour
 
     private int _numbersOfEnemies;
     private bool _isTimeFinished;
+    private bool _lose;
     private SceneLoader _sceneLoader;
+    private LivesDisplay _livesDisplay;
 
     private void Awake()
     {
         _sceneLoader = FindObjectOfType<SceneLoader>();
         if (_sceneLoader == null)
             throw new Exception($"No SceneLoader Object on {SceneManager.GetActiveScene().name} scene");
+        
+        _livesDisplay = FindObjectOfType<LivesDisplay>();
+        if (_livesDisplay == null)
+            throw new Exception($"No LivesDisplay Object on {SceneManager.GetActiveScene().name} scene");
+    }
+
+    private void Start()
+    {
+       _livesDisplay.OnLivesEnded.AddListener(LoseGame);
     }
 
     public void EnemySpawned()
@@ -32,7 +44,7 @@ public class LevelController : MonoBehaviour
     public void EnemyKilled()
     {
         _numbersOfEnemies--;
-        if (_numbersOfEnemies <= 0 && _isTimeFinished)
+        if (_numbersOfEnemies <= 0 && _isTimeFinished && !_lose)
         {
             AllEnemiesKilled.Invoke();
             levelCompleteCanvas.SetActive(true);
@@ -50,5 +62,11 @@ public class LevelController : MonoBehaviour
     private void PlayWinSFX()
     {
         AudioSource.PlayClipAtPoint(winSound, Vector3.zero, 1f);
+    }
+
+    private void LoseGame()
+    {
+        loseCanvas.SetActive(true);
+        _lose = true;
     }
 }
