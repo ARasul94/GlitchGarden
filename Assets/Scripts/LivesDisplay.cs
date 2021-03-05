@@ -7,10 +7,11 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Text))]
 public class LivesDisplay : MonoBehaviour
 {
-    [SerializeField] private int lives = 5;
-
-    public readonly UnityEvent OnLivesEnded = new UnityEvent(); 
+    [SerializeField] private int baseLives = 5;
     
+    public readonly UnityEvent OnLivesEnded = new UnityEvent();
+
+    private int lives;
     private Text _livesText;
     private int _damage = 1;
     private SceneLoader _sceneLoader;
@@ -25,6 +26,7 @@ public class LivesDisplay : MonoBehaviour
 
     private void Start()
     {
+        lives = baseLives - PlayerPrefsController.GetDifficulty();
         UpdateDisplay();
     }
 

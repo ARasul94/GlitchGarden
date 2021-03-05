@@ -4,9 +4,10 @@ using UnityEngine.SceneManagement;
 
 namespace Buttons
 {
-    public class BackToStartButton : BaseLoaderButton
+    public class DefaultOptionButton : BaseLoaderButton
     {
         private OptionsController _optionsController;
+
         private void Awake()
         {
             base.Awake();
@@ -14,16 +15,16 @@ namespace Buttons
             if (_optionsController == null)
                 throw new Exception($"No OptionController Object on {SceneManager.GetActiveScene().name} scene");
         }
-        
+
         private void Start()
         {
             base.Start();
-            ButtonComponent.onClick.AddListener(BackToStart);
+            ButtonComponent.onClick.AddListener(ResetSettings);
         }
 
-        private void BackToStart()
+        private void ResetSettings()
         {
-            SceneLoader.LoadStartScene();
+            _optionsController.ResetOptions();
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Buttons
     {
         private void Start()
         {
+            base.Start();
             ButtonComponent.onClick.AddListener(Application.Quit);
         }
     }

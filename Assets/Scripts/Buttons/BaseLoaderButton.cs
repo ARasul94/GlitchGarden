@@ -14,13 +14,13 @@ namespace Buttons
 
         protected Button ButtonComponent => _buttonComponent;
 
-        private void Awake()
+        public void Awake()
         {
             _sceneLoader = FindObjectOfType<SceneLoader>();
             _buttonComponent = GetComponent<Button>();
         }
 
-        private void Start()
+        public void Start()
         {
             if (_sceneLoader == null)
                 throw new Exception($"No SceneLoader Object on {SceneManager.GetActiveScene().name} scene");
