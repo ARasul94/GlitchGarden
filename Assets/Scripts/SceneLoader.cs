@@ -30,15 +30,34 @@ public class SceneLoader : MonoBehaviour
 
     private void LoadNextScene()
     {
-        SceneManager.LoadScene(_currentSceneIndex + 1);
+        _currentSceneIndex++;
+        Load();
+    }
+
+    public void LoadGameScene()
+    {
+        _currentSceneIndex = 2;
+        Load();
+    }
+    
+    public void LoadOptionsScene()
+    {
+        _currentSceneIndex = 4;
+        Load();
     }
 
     public void LoadStartScene()
     {
-        SceneManager.LoadScene(0);
+        _currentSceneIndex = 0;
+        Load();
     }
     
     public void LoadSameScene()
+    {
+        Load();
+    }
+
+    private void Load()
     {
         SceneManager.LoadScene(_currentSceneIndex);
     }
