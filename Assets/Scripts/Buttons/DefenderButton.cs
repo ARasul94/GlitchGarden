@@ -3,25 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DefenderButton : MonoBehaviour
 {
     [SerializeField] private Color32 defaultColor;
     [SerializeField] private Defender defenderPrefab;
+    [SerializeField] private Text costText;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     
     
-    public SpriteRenderer SpriteRenderer => _spriteRenderer;
     
-    private SpriteRenderer _spriteRenderer;
+    public SpriteRenderer SpriteRenderer => spriteRenderer;
+    
+    
     private List<DefenderButton> _buttons;
     private DefenderSpawner _defenderSpawner;
 
     private void Awake()
     {
         _buttons = FindObjectsOfType<DefenderButton>().ToList();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _spriteRenderer.color = defaultColor;
         _defenderSpawner = FindObjectOfType<DefenderSpawner>();
+    }
+
+    private void Start()
+    {
+        spriteRenderer.color = defaultColor;
+        costText.text = defenderPrefab.GetCost().ToString();
     }
 
     private void OnMouseDown()
@@ -31,7 +39,7 @@ public class DefenderButton : MonoBehaviour
             button.SpriteRenderer.color = defaultColor;
         }
         
-        _spriteRenderer.color = Color.white;
+        spriteRenderer.color = Color.white;
         _defenderSpawner.SetSelectedDefender(defenderPrefab);
     }
 }

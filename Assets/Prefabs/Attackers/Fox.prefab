@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
-  damage: 10
+  damage: 40
 --- !u!50 &9206675442847533839
 Rigidbody2D:
   serializedVersion: 4
@@ -223,6 +223,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcbbcdbf58b83844b87f11b6cf6533bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 300
   deathVFX: {fileID: 8662914714173475151, guid: c6cfa01d21606a044b7db6ab4ba247e4,
     type: 3}

@@ -957,6 +957,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2696236686300874649, guid: 6c3be5bb091e9c94f8b393fa86cae744,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696236686300874649, guid: 6c3be5bb091e9c94f8b393fa86cae744,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696236687728750573, guid: 6c3be5bb091e9c94f8b393fa86cae744,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696236687728750573, guid: 6c3be5bb091e9c94f8b393fa86cae744,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696236687734103010, guid: 6c3be5bb091e9c94f8b393fa86cae744,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696236687734103010, guid: 6c3be5bb091e9c94f8b393fa86cae744,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4845150403215643450, guid: 6c3be5bb091e9c94f8b393fa86cae744,
         type: 3}
       propertyPath: m_RootOrder
@@ -1016,6 +1046,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Buttons
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329372612478418372, guid: 6c3be5bb091e9c94f8b393fa86cae744,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329372612478418372, guid: 6c3be5bb091e9c94f8b393fa86cae744,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7531051366845628000, guid: 6c3be5bb091e9c94f8b393fa86cae744,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7531051366845628000, guid: 6c3be5bb091e9c94f8b393fa86cae744,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7531051366845628000, guid: 6c3be5bb091e9c94f8b393fa86cae744,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c3be5bb091e9c94f8b393fa86cae744, type: 3}
