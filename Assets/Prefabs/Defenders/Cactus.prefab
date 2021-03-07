@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd75fe5761c3d7479fcbc5117a2619c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 6477842780420920316, guid: eed0d8c87b3fa894db598bafc925f913,
+  projectilePrefab: {fileID: 6477842780420920316, guid: eed0d8c87b3fa894db598bafc925f913,
     type: 3}
   gun: {fileID: 3065402915509347562}
 --- !u!61 &6953615094217098535

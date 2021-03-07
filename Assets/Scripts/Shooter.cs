@@ -6,17 +6,25 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Shooter : MonoBehaviour
 {
-    [SerializeField] private GameObject projectile;
+    [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform gun;
 
     private Spawner _myLaneSpawner;
     private Animator _animator;
     private readonly int _isAttacking = Animator.StringToHash("IsAttacking");
+    private Transform _projectilesParent;
+    private const string PROJECTILES_PARENT_NAME = "Projectile";
 
     private void Awake()
     {
         SetMyLaneSpawner();
         _animator = GetComponent<Animator>();
+        
+        var parent = GameObject.Find(PROJECTILES_PARENT_NAME);
+        if (parent == null)
+            parent = new GameObject(PROJECTILES_PARENT_NAME);
+
+        _projectilesParent = parent.transform;
     }
 
     private void Update()
@@ -44,7 +52,7 @@ public class Shooter : MonoBehaviour
 
     public void Fire()
     {
-        Instantiate(projectile, gun.position, gun.rotation);
-        return;
+        var projectile = Instantiate(projectilePrefab, gun.position, gun.rotation);
+        projectile.transform.parent = _projectilesParent;
     }
 }

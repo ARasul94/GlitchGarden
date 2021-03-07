@@ -7,10 +7,17 @@ public class DefenderSpawner : MonoBehaviour
 {
     private Defender _defender;
     private StarDisplay _starDisplay;
+    private Transform _defendersParent;
+    private const string DEFENDER_PARENT_NAME = "Defenders";
 
     private void Awake()
     {
         _starDisplay = FindObjectOfType<StarDisplay>();
+        var parent = GameObject.Find(DEFENDER_PARENT_NAME);
+        if (parent == null)
+            parent = new GameObject(DEFENDER_PARENT_NAME);
+
+        _defendersParent = parent.transform;
     }
 
     public void SetSelectedDefender(Defender defenderToSelect)
@@ -43,7 +50,8 @@ public class DefenderSpawner : MonoBehaviour
 
         if (_starDisplay.HaveEnoughStarsToBuild(_defender.GetCost()))
         {
-            Instantiate(_defender, position, Quaternion.identity);
+            var defender = Instantiate(_defender, position, Quaternion.identity);
+            defender.transform.parent = _defendersParent.transform;
             _starDisplay.SpendStar(_defender.GetCost());
         }
     }
