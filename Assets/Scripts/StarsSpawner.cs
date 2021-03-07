@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StarsSpawner : MonoBehaviour
 {
-    [SerializeField] private int startToAdd = 2;
+    [SerializeField][Tooltip("Base stars to add")] private int baseStarsToAdd = 3;
 
     private StarDisplay _starDisplay;
 
@@ -16,7 +16,7 @@ public class StarsSpawner : MonoBehaviour
 
     public void AddStar()
     {
-        _starDisplay.AddStars(startToAdd);
+        _starDisplay.AddStars(baseStarsToAdd - PlayerPrefsController.GetDifficulty());
     }
 
 }
